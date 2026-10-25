@@ -99,7 +99,7 @@ function rawmStep(t){
     if(!m.el.isConnected)continue;
     run=true;
     if(m.last==null){m.last=t;continue;}
-    var dt=Math.min((t-m.last)/1000,.1);m.last=t;
+    var dt=Math.min((t-m.last)/1000,.5);m.last=t;
     m.x+=m.vx*dt;m.y+=m.vy*dt;
     if(m.x<0){m.x=0;m.vx=Math.abs(m.vx);}
     if(m.x>vw-m.w){m.x=vw-m.w;m.vx=-Math.abs(m.vx);}

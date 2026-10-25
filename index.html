@@ -43,7 +43,6 @@ a.ax{display:inline-block;-webkit-tap-highlight-color:transparent;cursor:pointer
 @keyframes tagfade{0%{opacity:0;transform:translate(-50%,-60%) scale(.6)}15%{opacity:1;transform:translate(-50%,-140%) scale(1)}70%{opacity:1;transform:translate(-50%,-140%)}100%{opacity:0;transform:translate(-50%,-170%)}}
 .hf{position:absolute;font-size:22px;pointer-events:none;animation:fly 1s ease-out forwards}
 @keyframes fly{0%{transform:translate(0,0) scale(.6);opacity:1}100%{transform:translate(var(--dx),-90px) scale(1.3);opacity:0}}
-@media (max-width:480px){.ra{width:52px;height:52px}}
 @media (prefers-reduced-motion:reduce){.ra .ae{animation:none}.ra.go{transition:none}.hf{display:none}.rtag{animation:none}}
 @media (prefers-reduced-motion:reduce){.ra,.ra>span.ae{animation:none}.ra.go{transition:none}.hf{display:none}.rtag{animation:none}}
 </style></head><body>
@@ -291,71 +290,45 @@ function worm(){
   var d='M10 48 C16 40 22 54 30 46 C38 38 44 52 52 44';
   return PL(d,PAL.o,7.5)+PL(d,PAL.l,5)+Cd(50,42,1.5)+Cd(54,43,1.5);
 }
-function microbe(){
-  var s='',an;
-  for(var k=0;k<8;k++){an=k*Math.PI/4;s+=C(32+Math.cos(an)*14,38+Math.sin(an)*14,2.6,PAL.a);}
-  s+=C(32,38,11,PAL.l)+eyes(32,36,3.5)+PL('M28 42 q4 3 8 0',PAL.o,1.6);
+
+
+
+
+
+
+
+
+
+
+function frog(){
+  var s=E(32,40,17,13,PAL.b);
+  s+=C(24,26,6.5,PAL.b)+C(40,26,6.5,PAL.b);
+  s+=C(24,25,3.4,PAL.w)+C(40,25,3.4,PAL.w);
+  s+=Cd(24,25,1.8)+Cd(40,25,1.8);
+  s+=PL('M26 44 q6 4 12 0',PAL.o,2);
+  s+=E(20,52,6,3,PAL.a)+E(44,52,6,3,PAL.a);
   return s;
 }
-function flower(o){
-  o=o||{};var s=PL('M32 40 L32 58',PAL.o,2.2)+P('M32 50 C26 48 24 44 24 42 C28 42 31 45 32 48 Z',PAL.a);
-  var cx=32,cy=28,n=o.sun?9:6,an;
-  for(var k=0;k<n;k++){an=k*2*Math.PI/n-Math.PI/2;s+=E(cx+Math.cos(an)*(o.sun?9:7.5),cy+Math.sin(an)*(o.sun?9:7.5),o.sun?3.5:4.5,o.sun?5.5:6.5,o.rose?PAL.a:PAL.l);}
-  s+=C(cx,cy,o.sun?5.5:4.5,o.rose?PAL.l:PAL.a);
-  if(o.rose)s+=PL(cx+' '+cy+' m-2.5 0 a2.5 2.5 0 1 1 2.5 2.5',PAL.o,1.3);
-  if(o.sun)s+=Cd(cx-2,cy-1,1)+Cd(cx+2,cy-1,1)+Cd(cx,cy+2,1);
+function ant(){
+  var s=C(18,34,5,PAL.b)+C(30,36,6.5,PAL.b)+E(44,36,8,6,PAL.b);
+  s+=PL('M26 40 L24 48 M32 41 L31 49 M38 40 L40 48',PAL.o,2);
+  s+=PL('M14 30 C11 26 10 23 11 20 M17 29 C16 25 16 22 18 19',PAL.o,1.6);
+  s+=Cd(16,32,1.6);
   return s;
 }
-function tree(o){
-  if(o.palm){var s=PL('M30 58 C28 46 28 36 32 26',PAL.o,4);s+=PL('M30 58 C28 46 28 36 32 26',PAL.a,2.2);
-    s+=P('M32 26 C24 22 16 22 12 26 C18 26 24 28 30 30 Z',PAL.a)+P('M32 26 C40 22 48 22 52 26 C46 26 40 28 34 30 Z',PAL.a)+P('M32 26 C28 18 22 14 16 14 C22 18 26 22 30 28 Z',PAL.b)+P('M32 26 C36 18 42 14 48 14 C42 18 38 22 34 28 Z',PAL.b);
-    s+=C(30,28,2.4,PAL.n)+C(35,28,2.4,PAL.n);return s;}
-  var s=P('M28 44 L36 44 L36 58 L28 58 Z',PAL.a);
-  s+=P('M32 8 L46 28 L18 28 Z',PAL.b)+P('M32 16 L48 38 L16 38 Z',PAL.b)+P('M32 24 L50 46 L14 46 Z',PAL.b);
+function spider(){
+  var s=C(32,36,9,PAL.b)+C(32,26,5.5,PAL.b);
+  s+=Cd(30,25,1.5)+Cd(34,25,1.5);
+  s+=PL('M25 32 L14 24 M24 37 L12 36 M25 41 L15 48 M39 32 L50 24 M40 37 L52 36 M39 41 L49 48 M28 44 L24 54 M36 44 L40 54',PAL.o,2);
   return s;
 }
-function cactus(){
-  var s=P('M27 22 L37 22 L37 58 L27 58 Z',PAL.b);
-  s+=P('M20 32 C20 28 24 28 24 32 L24 40 L27 40 L27 46 L20 46 Z',PAL.b);
-  s+=P('M44 26 C44 22 40 22 40 26 L40 36 L37 36 L37 42 L44 42 Z',PAL.b);
-  s+=PL('M30 28 L30 34 M34 40 L34 46 M31 50 L31 54',PAL.o,1.3);
-  return s;
-}
-function mushroom(){
-  var s=P('M26 38 L38 38 L36 56 L28 56 Z',PAL.l);
-  s+=P('M14 38 A18 15 0 0 1 50 38 Z',PAL.a);
-  s+=C(24,28,2.6,PAL.l)+C(34,23,2.6,PAL.l)+C(42,30,2.6,PAL.l);
-  return s;
-}
-function coral(){
-  return PL('M32 58 L32 40 M32 48 C26 46 22 42 22 34 M22 34 C20 30 22 27 24 26 M32 40 C36 38 38 34 38 28 M38 28 C38 24 40 22 42 21 M32 48 C38 48 42 44 44 40 M44 40 C46 38 48 38 50 39',PAL.a,4)+PL('M32 58 L32 40 M32 48 C26 46 22 42 22 34 M32 40 C36 38 38 34 38 28 M32 48 C38 48 42 44 44 40',PAL.o,1.2);
-}
-function nest(){
-  var s=E(32,46,16,8,PAL.a);
-  s+=PL('M18 44 C24 40 40 40 46 44 M20 48 C26 44 38 44 44 48',PAL.o,1.5);
-  s+=E(27,38,4.5,6,PAL.w)+E(37,38,4.5,6,PAL.w);
-  return s;
-}
-function rock(){
-  var s=P('M16 50 C14 40 20 30 30 28 C42 26 50 34 48 46 C47 52 40 56 30 55 C22 54 17 55 16 50 Z',PAL.b);
-  s+=PL('M24 38 C28 36 32 36 34 38 M36 46 C39 45 42 45 44 47',PAL.o,1.4);
-  return s;
-}
-function star(){
-  var s=P('M32 14 L37 27 L51 28 L40 37 L44 51 L32 43 L20 51 L24 37 L13 28 L27 27 Z',PAL.l);
-  s+=eyes(32,33,3.5)+PL('M29 38 q3 2.5 6 0',PAL.o,1.5);
-  return s;
-}
-function rainbow(){
-  return P('M10 50 A22 22 0 0 1 54 50 L46 50 A14 14 0 0 0 18 50 Z',PAL.a)+P('M18 50 A14 14 0 0 1 46 50 L39 50 A7 7 0 0 0 25 50 Z',PAL.l)+E(14,50,7,5,PAL.w)+E(50,50,7,5,PAL.w);
-}
-var DRAW={quad:quad,bird:bird,fish:fish,snake:snake,turtle:turtle,croc:croc,trex:trex,seal:seal,bat:bat,butterfly:butterfly,bee:bee,ladybug:ladybug,octopus:octopus,squid:squid,jellyfish:jellyfish,crab:crab,shrimp:shrimp,snail:snail,caterpillar:caterpillar,worm:worm,microbe:microbe,flower:flower,tree:tree,cactus:cactus,mushroom:mushroom,coral:coral,nest:nest,rock:rock,star:star,rainbow:rainbow};
+var DRAW={quad:quad,bird:bird,fish:fish,snake:snake,turtle:turtle,croc:croc,trex:trex,seal:seal,bat:bat,butterfly:butterfly,bee:bee,ladybug:ladybug,octopus:octopus,squid:squid,jellyfish:jellyfish,crab:crab,shrimp:shrimp,snail:snail,caterpillar:caterpillar,worm:worm,frog:frog,ant:ant,spider:spider};
 function animalSVG(spec){
   var fn=DRAW[spec[1]]||quad;
   return '<svg viewBox="0 0 64 64" width="100%" height="100%">'+fn(spec[2]||{})+'</svg>';
 }
 
-var A=[["Cat","quad",{e:"pointy",t:"thin"}],["Dog","quad",{e:"floppy",t:"thin"}],["Bunny","quad",{e:"long",t:"fluffy"}],["Mouse","quad",{e:"round",t:"thin"}],["Tiger","quad",{e:"round",t:"thin",stripes:1}],["Elephant","quad",{e:"big",trunk:1,t:"thin"}],["Monkey","quad",{e:"round",t:"curl"}],["Horse","quad",{e:"pointy",mane:1,t:"fluffy"}],["Pig","quad",{e:"pointy",t:"curl",snout:"pig"}],["Sheep","quad",{e:"none",wool:1,t:"none"}],["Giraffe","quad",{e:"round",longneck:1,spots:1,t:"thin"}],["Turtle","turtle",{}],["Butterfly","butterfly",{}],["Penguin","bird",{upright:1}],["Dolphin","fish",{dolphin:1}],["Leopard","quad",{e:"round",spots:1,t:"thin"}],["Cow","quad",{e:"round",horns:1,spots:1,t:"thin",snout:"hippo"}],["Kangaroo","quad",{e:"long",t:"thin"}],["Flamingo","bird",{longneck:1,longlegs:1}],["Whale","fish",{big:1,spout:1}],["Goat","quad",{e:"floppy",horns:1,beard:1,t:"none"}],["Snake","snake",{}],["Baby Chick","bird",{}],["Owl","bird",{tufts:1,round:1}],["Seal","seal",{}],["Rhino","quad",{e:"round",horn:1,t:"none"}],["Poodle","quad",{e:"floppy",wool:1,t:"fluffy"}],["Swan","bird",{longneck:1}],["Bat","bat",{}],["Fish","fish",{}],["Chipmunk","quad",{e:"round",stripes:1,t:"fluffy"}],["Peacock","bird",{fan:1}],["Crocodile","croc",{}],["Hippo","quad",{e:"round",t:"none",snout:"hippo"}],["Parrot","bird",{tail:1}],["Llama","quad",{e:"long",longneck:1,t:"none"}],["Bee","bee",{}],["Duck","bird",{}],["Mammoth","quad",{e:"big",trunk:1,tusks:1,t:"thin"}],["Gorilla","quad",{e:"round",t:"none"}],["Shark","fish",{shark:1}],["Lizard","croc",{small:1}],["Eagle","bird",{wings:1}],["Ram","quad",{e:"round",horns:"curl",t:"none"}],["Octopus","octopus",{}],["Hedgehog","quad",{e:"round",spikes:1,t:"none"}],["Camel","quad",{e:"round",humps:1,t:"thin"}],["Ladybug","ladybug",{}],["Dodo","bird",{round:1}],["Big Whale","fish",{big:1,spout:1}],["Zebra","quad",{e:"pointy",stripes:1,mane:1,t:"thin"}],["Sloth","quad",{e:"round",t:"none",sleepy:1}],["Rooster","bird",{comb:1}],["Jellyfish","jellyfish",{}],["Orangutan","quad",{e:"round",t:"none"}],["Tropical Fish","fish",{stripes:1}],["Otter","quad",{e:"round",t:"thin"}],["Dragon","croc",{wings:1}],["Chicken","bird",{comb:1,round:1}],["T-Rex","trex",{}],["Rat","quad",{e:"round",t:"thin"}],["Phoenix","bird",{wings:1,crest:1,tail:1}],["Crab","crab",{}],["Boar","quad",{e:"pointy",tusks:1,t:"none",snout:"pig"}],["Dove","bird",{}],["Badger","quad",{e:"round",stripes:1,t:"none"}],["Blowfish","fish",{puff:1}],["Goose","bird",{longneck:1}],["Dinosaur","trex",{longneck:1}],["Midnight Cat","quad",{e:"pointy",t:"thin"}],["Snail","snail",{}],["Turkey","bird",{fan:1,comb:1}],["Beaver","quad",{e:"round",t:"flat"}],["Squid","squid",{}],["Ox","quad",{e:"round",horns:1,t:"thin"}],["Crow","bird",{}],["Caterpillar","caterpillar",{}],["Two-Hump Camel","quad",{e:"round",humps:2,t:"thin"}],["Shrimp","shrimp",{}],["Skunk","quad",{e:"pointy",t:"bigfluffy",stripes:1}],["Polar Bear","quad",{e:"round",t:"none"}],["Worm","worm",{}],["Microbe","microbe",{}],["Donkey","quad",{e:"long",mane:1,t:"thin"}],["Guide Dog","quad",{e:"floppy",t:"thin",harness:1}],["Bison","quad",{e:"round",horns:1,hump:1,t:"thin"}],["Moose","quad",{e:"round",antlers:1,t:"thin"}],["Coral","coral",{}],["Nest with Eggs","nest",{}],["Rock","rock",{}],["Mushroom","mushroom",{}],["Evergreen","tree",{pine:1}],["Palm Tree","tree",{palm:1}],["Blossom","flower",{}],["Hibiscus","flower",{}],["Rose","flower",{rose:1}],["Sunflower","flower",{sun:1}],["Star","star",{}],["Rainbow","rainbow",{}],["Cactus","cactus",{}]];
+var A=[["Cat","quad",{e:"pointy",t:"thin"}],["Dog","quad",{e:"floppy",t:"thin"}],["Bunny","quad",{e:"long",t:"fluffy"}],["Mouse","quad",{e:"round",t:"thin"}],["Tiger","quad",{e:"round",t:"thin",stripes:1}],["Elephant","quad",{e:"big",trunk:1,t:"thin"}],["Monkey","quad",{e:"round",t:"curl"}],["Horse","quad",{e:"pointy",mane:1,t:"fluffy"}],["Pig","quad",{e:"pointy",t:"curl",snout:"pig"}],["Sheep","quad",{e:"none",wool:1,t:"none"}],["Giraffe","quad",{e:"round",longneck:1,spots:1,t:"thin"}],["Turtle","turtle",{}],["Butterfly","butterfly",{}],["Penguin","bird",{upright:1}],["Dolphin","fish",{dolphin:1}],["Leopard","quad",{e:"round",spots:1,t:"thin"}],["Cow","quad",{e:"round",horns:1,spots:1,t:"thin",snout:"hippo"}],["Kangaroo","quad",{e:"long",t:"thin"}],["Flamingo","bird",{longneck:1,longlegs:1}],["Whale","fish",{big:1,spout:1}],["Goat","quad",{e:"floppy",horns:1,beard:1,t:"none"}],["Snake","snake",{}],["Baby Chick","bird",{}],["Owl","bird",{tufts:1,round:1}],["Seal","seal",{}],["Rhino","quad",{e:"round",horn:1,t:"none"}],["Poodle","quad",{e:"floppy",wool:1,t:"fluffy"}],["Swan","bird",{longneck:1}],["Bat","bat",{}],["Fish","fish",{}],["Chipmunk","quad",{e:"round",stripes:1,t:"fluffy"}],["Peacock","bird",{fan:1}],["Crocodile","croc",{}],["Hippo","quad",{e:"round",t:"none",snout:"hippo"}],["Parrot","bird",{tail:1}],["Llama","quad",{e:"long",longneck:1,t:"none"}],["Bee","bee",{}],["Duck","bird",{}],["Mammoth","quad",{e:"big",trunk:1,tusks:1,t:"thin"}],["Gorilla","quad",{e:"round",t:"none"}],["Shark","fish",{shark:1}],["Lizard","croc",{small:1}],["Eagle","bird",{wings:1}],["Ram","quad",{e:"round",horns:"curl",t:"none"}],["Octopus","octopus",{}],["Hedgehog","quad",{e:"round",spikes:1,t:"none"}],["Camel","quad",{e:"round",humps:1,t:"thin"}],["Ladybug","ladybug",{}],["Dodo","bird",{round:1}],["Big Whale","fish",{big:1,spout:1}],["Zebra","quad",{e:"pointy",stripes:1,mane:1,t:"thin"}],["Sloth","quad",{e:"round",t:"none",sleepy:1}],["Rooster","bird",{comb:1}],["Jellyfish","jellyfish",{}],["Orangutan","quad",{e:"round",t:"none"}],["Tropical Fish","fish",{stripes:1}],["Otter","quad",{e:"round",t:"thin"}],["Dragon","croc",{wings:1}],["Chicken","bird",{comb:1,round:1}],["T-Rex","trex",{}],["Rat","quad",{e:"round",t:"thin"}],["Phoenix","bird",{wings:1,crest:1,tail:1}],["Crab","crab",{}],["Boar","quad",{e:"pointy",tusks:1,t:"none",snout:"pig"}],["Dove","bird",{}],["Badger","quad",{e:"round",stripes:1,t:"none"}],["Blowfish","fish",{puff:1}],["Goose","bird",{longneck:1}],["Dinosaur","trex",{longneck:1}],["Midnight Cat","quad",{e:"pointy",t:"thin"}],["Snail","snail",{}],["Turkey","bird",{fan:1,comb:1}],["Beaver","quad",{e:"round",t:"flat"}],["Squid","squid",{}],["Ox","quad",{e:"round",horns:1,t:"thin"}],["Crow","bird",{}],["Caterpillar","caterpillar",{}],["Two-Hump Camel","quad",{e:"round",humps:2,t:"thin"}],["Shrimp","shrimp",{}],["Skunk","quad",{e:"pointy",t:"bigfluffy",stripes:1}],["Polar Bear","quad",{e:"round",t:"none"}],["Worm","worm",{}],["Ant","ant",{}],["Donkey","quad",{e:"long",mane:1,t:"thin"}],["Guide Dog","quad",{e:"floppy",t:"thin",harness:1}],["Bison","quad",{e:"round",horns:1,hump:1,t:"thin"}],["Moose","quad",{e:"round",antlers:1,t:"thin"}],["Frog","frog",{}],["Spider","spider",{}],["Hamster","quad",{e:"round",t:"fluffy"}],["Fox","quad",{e:"pointy",t:"bigfluffy"}],["Wolf","quad",{e:"pointy",t:"fluffy"}],["Koala","quad",{e:"big",t:"none"}],["Panda","quad",{e:"round",t:"none"}],["Squirrel","quad",{e:"round",t:"bigfluffy"}],["Deer","quad",{e:"long",antlers:1,t:"fluffy"}],["Alpaca","quad",{e:"long",longneck:1,t:"fluffy"}],["Lemur","quad",{e:"round",t:"curl",stripes:1}],["Ferret","quad",{e:"floppy",t:"bigfluffy"}],["Chinchilla","quad",{e:"big",t:"fluffy"}]];
 var i=-1;
 try{i=parseInt(localStorage.getItem('timaZooIdx')||'-1',10);if(isNaN(i)||i<-1||i>=A.length)i=-1;}catch(e){}
 var btn=document.getElementById('zooBtn'),roam=document.getElementById('roam');
@@ -403,6 +376,18 @@ function spawn(idx){
   var flip=document.createElement('span');flip.className='flip';
   var s=document.createElement('span');s.className='ae';s.innerHTML=animalSVG(A[idx]);
   s.style.animationDelay=(-Math.random())+'s';
+  try{
+    var svg0=s.querySelector('svg');
+    var g0=document.createElementNS('http://www.w3.org/2000/svg','g');
+    while(svg0.firstChild)g0.appendChild(svg0.firstChild);
+    svg0.appendChild(g0);
+    var bb=g0.getBBox();
+    if(bb.width>0&&bb.height>0){
+      var sc=Math.min(56/bb.width,56/bb.height,1.9);
+      var tx=(64-bb.width*sc)/2-bb.x*sc,ty=(64-bb.height*sc)/2-bb.y*sc;
+      g0.setAttribute('transform','translate('+tx+','+ty+') scale('+sc+')');
+    }
+  }catch(e){}
   flip.appendChild(s);r.appendChild(flip);
   var tg=document.createElement('div');tg.className='rtag';tg.textContent=A[idx][0];
   r.appendChild(tg);

@@ -32,9 +32,9 @@ a.ax{display:inline-block;-webkit-tap-highlight-color:transparent;cursor:pointer
 .zoo{margin-top:22px;font:inherit;font-size:20px;font-weight:bold;color:#fff;background:linear-gradient(180deg,#ff6fae,#ff4894);border:2px solid #d63a82;border-radius:999px;padding:13px 24px;cursor:pointer;box-shadow:0 4px 14px rgba(214,58,130,.4);-webkit-tap-highlight-color:transparent}
 .zoo:active{transform:scale(.96)}
 .roam{position:fixed;inset:0;overflow:hidden;pointer-events:none;z-index:2}
-.ra{position:absolute;left:0;top:0;font-size:52px;line-height:1;will-change:transform}
+.ra{position:absolute;left:0;top:0;width:56px;height:56px;will-change:transform}
 .ra .flip{display:inline-block;transition:transform .3s}
-.ra .ae{display:inline-block;filter:grayscale(1) sepia(1) saturate(4) hue-rotate(-100deg) brightness(1.06);animation:hp .9s cubic-bezier(.3,.1,.5,1) infinite}
+.ra .ae{display:inline-block;width:100%;height:100%;animation:hp .9s cubic-bezier(.3,.1,.5,1) infinite}
 .ra.pop .ae{animation:pop .5s cubic-bezier(.2,1.7,.4,1),hp .9s cubic-bezier(.3,.1,.5,1) .5s infinite}
 @keyframes pop{0%{transform:scale(.15) rotate(-16deg);opacity:0}100%{transform:scale(1) rotate(0);opacity:1}}
 .ra.go{transition:opacity .8s;opacity:0}
@@ -42,7 +42,7 @@ a.ax{display:inline-block;-webkit-tap-highlight-color:transparent;cursor:pointer
 @keyframes tagfade{0%{opacity:0;transform:translate(-50%,-60%) scale(.6)}15%{opacity:1;transform:translate(-50%,-140%) scale(1)}70%{opacity:1;transform:translate(-50%,-140%)}100%{opacity:0;transform:translate(-50%,-170%)}}
 .hf{position:absolute;font-size:22px;pointer-events:none;animation:fly 1s ease-out forwards}
 @keyframes fly{0%{transform:translate(0,0) scale(.6);opacity:1}100%{transform:translate(var(--dx),-90px) scale(1.3);opacity:0}}
-@media (max-width:480px){.ra{font-size:42px}}
+@media (max-width:480px){.ra{width:44px;height:44px}}
 @media (prefers-reduced-motion:reduce){.ra .ae{animation:none}.ra.go{transition:none}.hf{display:none}.rtag{animation:none}}
 @media (prefers-reduced-motion:reduce){.ra,.ra>span.ae{animation:none}.ra.go{transition:none}.hf{display:none}.rtag{animation:none}}
 </style></head><body>
@@ -69,7 +69,292 @@ a.ax{display:inline-block;-webkit-tap-highlight-color:transparent;cursor:pointer
 <button id="zooBtn" class="zoo" type="button">🐾 Tima's Zoo 🐾</button>
 <script>
 (function(){
-var A=[["Cat","🐈"],["Dog","🐕"],["Bunny","🐇"],["Mouse","🐁"],["Tiger","🐅"],["Elephant","🐘"],["Monkey","🐒"],["Horse","🐎"],["Pig","🐖"],["Sheep","🐑"],["Giraffe","🦒"],["Turtle","🐢"],["Butterfly","🦋"],["Penguin","🐧"],["Dolphin","🐬"],["Leopard","🐆"],["Cow","🐄"],["Kangaroo","🦘"],["Flamingo","🦩"],["Whale","🐳"],["Goat","🐐"],["Snake","🐍"],["Baby Chick","🐤"],["Owl","🦉"],["Seal","🦭"],["Rhino","🦏"],["Poodle","🐩"],["Swan","🦢"],["Bat","🦇"],["Fish","🐟"],["Chipmunk","🐿️"],["Peacock","🦚"],["Crocodile","🐊"],["Hippo","🦛"],["Parrot","🦜"],["Llama","🦙"],["Bee","🐝"],["Duck","🦆"],["Mammoth","🦣"],["Gorilla","🦍"],["Shark","🦈"],["Lizard","🦎"],["Eagle","🦅"],["Ram","🐏"],["Octopus","🐙"],["Hedgehog","🦔"],["Camel","🐪"],["Ladybug","🐞"],["Dodo","🦤"],["Big Whale","🐋"],["Zebra","🦓"],["Sloth","🦥"],["Rooster","🐓"],["Jellyfish","🪼"],["Orangutan","🦧"],["Tropical Fish","🐠"],["Otter","🦦"],["Dragon","🐉"],["Chicken","🐔"],["T-Rex","🦖"],["Rat","🐀"],["Phoenix","🐦‍🔥"],["Crab","🦀"],["Boar","🐗"],["Dove","🕊️"],["Badger","🦡"],["Blowfish","🐡"],["Goose","🪿"],["Dinosaur","🦕"],["Midnight Cat","🐈‍⬛"],["Snail","🐌"],["Turkey","🦃"],["Beaver","🦫"],["Squid","🦑"],["Ox","🐂"],["Crow","🐦‍⬛"],["Caterpillar","🐛"],["Two-Hump Camel","🐫"],["Shrimp","🦐"],["Skunk","🦨"],["Polar Bear","🐻‍❄️"],["Worm","🪱"],["Microbe","🦠"],["Donkey","🫏"],["Guide Dog","🦮"],["Bison","🦬"],["Moose","🫎"],["Coral","🪸"],["Nest with Eggs","🪺"],["Rock","🪨"],["Mushroom","🍄"],["Evergreen","🌲"],["Palm Tree","🌴"],["Blossom","🌸"],["Hibiscus","🌺"],["Rose","🌹"],["Sunflower","🌻"],["Star","⭐"],["Rainbow","🌈"],["Cactus","🌵"]];
+// Bunny-style SVG animal generator. Palette matches the page bunnies:
+// body #ffb3d9, accent #ff8cc4, light #ffd1e8, outline #b02a73, eyes #6b1f4d.
+var PAL={b:'#ffb3d9',a:'#ff8cc4',l:'#ffd1e8',o:'#b02a73',e:'#6b1f4d',w:'#fff',n:'#ff4894'};
+function E(x,y,rx,ry,f){return '<ellipse cx="'+x+'" cy="'+y+'" rx="'+rx+'" ry="'+ry+'" fill="'+f+'" stroke="'+PAL.o+'" stroke-width="2"/>';}
+function C(x,y,r,f){return '<circle cx="'+x+'" cy="'+y+'" r="'+r+'" fill="'+f+'" stroke="'+PAL.o+'" stroke-width="2"/>';}
+function Cd(x,y,r){return '<circle cx="'+x+'" cy="'+y+'" r="'+r+'" fill="'+PAL.e+'"/>';}
+function P(d,f,w){return '<path d="'+d+'" fill="'+f+'" stroke="'+PAL.o+'" stroke-width="'+(w||2)+'" stroke-linecap="round" stroke-linejoin="round"/>';}
+function PL(d,w,wd){return '<path d="'+d+'" fill="none" stroke="'+(w||PAL.o)+'" stroke-width="'+(wd||2)+'" stroke-linecap="round"/>';}
+function eyes(x,y,g){return Cd(x-g,y,1.8)+Cd(x+g,y,1.8);}
+function ears(t,hx,hy){
+  if(t==='long')return E(hx-6,hy-16,4.5,11,PAL.a)+E(hx-6,hy-16,1.8,6.5,PAL.l)+E(hx+5,hy-16,4.5,11,PAL.a)+E(hx+5,hy-16,1.8,6.5,PAL.l);
+  if(t==='pointy')return P('M'+(hx-9)+' '+(hy-5)+' L'+(hx-7)+' '+(hy-17)+' L'+(hx-1)+' '+(hy-8)+' Z',PAL.b)+P('M'+(hx+9)+' '+(hy-5)+' L'+(hx+7)+' '+(hy-17)+' L'+(hx+1)+' '+(hy-8)+' Z',PAL.b);
+  if(t==='round')return C(hx-7,hy-9,4.5,PAL.a)+C(hx+7,hy-9,4.5,PAL.a);
+  if(t==='floppy')return E(hx-9,hy-2,4,8,PAL.a)+E(hx+9,hy-2,4,8,PAL.a);
+  if(t==='big')return E(hx-11,hy,6,9,PAL.a)+E(hx+11,hy,6,9,PAL.a);
+  return '';
+}
+function tail(t,bx,by){
+  if(t==='fluffy')return C(bx-19,by-4,4.5,PAL.w);
+  if(t==='bigfluffy')return E(bx-20,by-10,5.5,9,PAL.w);
+  if(t==='thin')return PL('M'+(bx-17)+' '+by+' C'+(bx-24)+' '+(by+2)+' '+(bx-25)+' '+(by+9)+' '+(bx-22)+' '+(by+12));
+  if(t==='curl')return PL('M'+(bx-17)+' '+by+' c-6 0 -7 7 -3 7 c3 0 3 -4 0 -4');
+  if(t==='flat')return P('M'+(bx-17)+' '+(by+2)+' l-8 3 l2 7 l8 -3 Z',PAL.a);
+  return '';
+}
+function quad(o){
+  o=o||{};var s='',bx=32,by=42,hx=45,hy=27;
+  if(o.mane)s+=C(hx-4,hy-3,13,PAL.a);
+  if(o.humps===1)s+=E(30,32,7,7,PAL.b);
+  if(o.humps===2)s+=E(25,33,5.5,6,PAL.b)+E(37,33,5.5,6,PAL.b);
+  if(o.hump)s+=E(26,33,8,7,PAL.b);
+  s+=tail(o.t,bx,by);
+  s+=E(bx,by,17,11,PAL.b);
+  s+=PL('M24 50 L24 59 M40 50 L40 59',PAL.o,2.5);
+  if(o.spots)s+=Cd(26,39,2.2)+Cd(34,44,2.2)+Cd(30,36,1.8);
+  if(o.stripes)s+=PL('M26 33 L26 41 M32 32 L32 40 M38 33 L38 41',PAL.a,2.5);
+  if(o.wool)s+=C(24,35,4.5,PAL.l)+C(31,33,4.5,PAL.l)+C(38,35,4.5,PAL.l);
+  if(o.spikes)s+=P('M18 36 L22 30 L26 35 L30 29 L34 34 L38 29 L42 34 L46 31',PAL.a,2);
+  if(o.harness)s+=PL('M28 32 L36 50',PAL.o,2.5);
+  if(o.longneck){
+    s+=PL('M42 40 C48 30 49 18 46 8',PAL.b,7);s+=PL('M42 40 C48 30 49 18 46 8',PAL.o,1.2);
+    hx=46;hy=8;s+=C(hx,hy,6.5,PAL.b);
+    s+=Cd(hx-2,hy-2,1.4);s+=E(hx+5,hy+2,2.2,1.6,PAL.n);
+    s+=C(hx-3,hy-7,2,PAL.a)+C(hx+3,hy-7,2,PAL.a);
+    return s;
+  }
+  s+=ears(o.e,hx,hy);
+  s+=C(hx,hy,10.5,PAL.b);
+  if(o.horns==='curl'){s+=PL('M'+(hx-9)+' '+(hy-8)+' c-6 -2 -6 6 -1 6 c4 0 4 -5 0 -5',PAL.l,2.5);s+=PL('M'+(hx+9)+' '+(hy-8)+' c6 -2 6 6 1 6 c-4 0 -4 -5 0 -5',PAL.l,2.5);}
+  else if(o.horns){s+=P('M'+(hx-8)+' '+(hy-8)+' L'+(hx-11)+' '+(hy-15)+' L'+(hx-5)+' '+(hy-10)+' Z',PAL.l)+P('M'+(hx+8)+' '+(hy-8)+' L'+(hx+11)+' '+(hy-15)+' L'+(hx+5)+' '+(hy-10)+' Z',PAL.l);}
+  if(o.antlers){s+=PL('M'+(hx-7)+' '+(hy-9)+' L'+(hx-11)+' '+(hy-18)+' M'+(hx-11)+' '+(hy-18)+' L'+(hx-15)+' '+(hy-16)+' M'+(hx-11)+' '+(hy-18)+' L'+(hx-9)+' '+(hy-14),PAL.l,2.2);s+=PL('M'+(hx+7)+' '+(hy-9)+' L'+(hx+11)+' '+(hy-18)+' M'+(hx+11)+' '+(hy-18)+' L'+(hx+15)+' '+(hy-16)+' M'+(hx+11)+' '+(hy-18)+' L'+(hx+9)+' '+(hy-14),PAL.l,2.2);}
+  if(o.trunk){s+=PL('M'+(hx+9)+' '+(hy+2)+' C'+(hx+16)+' '+(hy+6)+' '+(hx+15)+' '+(hy+14)+' '+(hx+10)+' '+(hy+17),PAL.b,5);s+=PL('M'+(hx+9)+' '+(hy+2)+' C'+(hx+16)+' '+(hy+6)+' '+(hx+15)+' '+(hy+14)+' '+(hx+10)+' '+(hy+17),PAL.o,1.2);}
+  if(o.tusks)s+=P('M'+(hx+7)+' '+(hy+5)+' L'+(hx+11)+' '+(hy+9)+' L'+(hx+6)+' '+(hy+8)+' Z',PAL.w);
+  if(o.horn)s+=P('M'+(hx+8)+' '+(hy+1)+' L'+(hx+15)+' '+(hy-4)+' L'+(hx+9)+' '+(hy+5)+' Z',PAL.l);
+  if(o.beard)s+=PL('M'+(hx+6)+' '+(hy+8)+' L'+(hx+6)+' '+(hy+13),PAL.a,2.2);
+  s+=eyes(hx-1,hy-2,3.6);
+  if(o.snout==='pig'){s+=E(hx+8,hy+2,4,3.2,PAL.l)+Cd(hx+7,hy+2,1)+Cd(hx+10,hy+2,1);}
+  else if(o.snout==='hippo'){s+=E(hx+7,hy+4,6,4,PAL.l)+Cd(hx+5,hy+2,1)+Cd(hx+9,hy+2,1);}
+  else if(!o.trunk){s+=E(hx+8,hy+3,2.4,1.8,PAL.n);}
+  if(o.sleepy)s+=PL('M'+(hx-5)+' '+(hy-3)+' q1.5 1.5 3 0 M'+(hx+2)+' '+(hy-3)+' q1.5 1.5 3 0',PAL.e,1.4);
+  return s;
+}
+function bird(o){
+  o=o||{};var s='',bx=30,by=42,hx=42,hy=27;
+  if(o.fan){s+=P('M18 44 C4 36 8 18 22 16 C16 24 18 34 24 40 Z',PAL.a);s+=Cd(14,26,1.6)+Cd(18,20,1.6)+Cd(11,33,1.6);}
+  if(!o.upright&&!o.longlegs)s+=PL('M27 52 L27 59 M35 52 L35 59',PAL.o,2.2);
+  if(o.longlegs)s+=PL('M27 50 L27 60 M35 50 L35 60',PAL.o,1.8);
+  if(o.upright){s+=E(bx,by-2,10.5,15,PAL.b);s+=E(bx,by+2,6.5,10,PAL.w);s+=E(bx-9,by,3,7,PAL.a);s+=E(bx+9,by,3,7,PAL.a);}
+  else if(o.round)s+=C(bx,by,12.5,PAL.b);
+  else s+=E(bx,by,14,11,PAL.b);
+  if(o.wings)s+=P('M22 40 C12 32 10 22 14 14 C20 22 26 28 32 32 Z',PAL.a);
+  else s+=E(bx-2,by,7.5,5,PAL.a);
+  if(o.tail)s+=PL('M18 46 C12 48 8 52 7 56',PAL.a,2.5);
+  if(o.longneck){s+=PL('M40 38 C47 30 47 18 43 10',PAL.b,6.5);s+=PL('M40 38 C47 30 47 18 43 10',PAL.o,1.1);hx=43;hy=10;s+=C(hx,hy,6,PAL.b);}
+  else {s+=C(hx,hy,9.5,PAL.b);}
+  if(o.tufts)s+=P('M'+(hx-8)+' '+(hy-6)+' L'+(hx-10)+' '+(hy-14)+' L'+(hx-4)+' '+(hy-9)+' Z',PAL.b)+P('M'+(hx+8)+' '+(hy-6)+' L'+(hx+10)+' '+(hy-14)+' L'+(hx+4)+' '+(hy-9)+' Z',PAL.b);
+  if(o.comb)s+=C(hx-3,hy-10,2.6,PAL.n)+C(hx+1,hy-11.5,2.6,PAL.n)+C(hx+5,hy-10,2.6,PAL.n);
+  if(o.crest)s+=PL('M'+hx+' '+(hy-9)+' C'+(hx+2)+' '+(hy-16)+' '+(hx+8)+' '+(hy-16)+' '+(hx+9)+' '+(hy-12),PAL.n,2.2);
+  if(o.round&&o.tufts){s+=C(hx-4,hy-1,3.6,PAL.w)+C(hx+4,hy-1,3.6,PAL.w);s+=Cd(hx-4,hy-1,1.6)+Cd(hx+4,hy-1,1.6);}
+  else s+=eyes(hx-1,hy-1,3.2);
+  s+=P('M'+(hx+8)+' '+(hy+1)+' L'+(hx+15)+' '+(hy+3.5)+' L'+(hx+8)+' '+(hy+5.5)+' Z',PAL.a);
+  return s;
+}
+function fish(o){
+  o=o||{};var s='';
+  if(o.puff){s+=C(30,38,13,PAL.b);for(var k=0;k<8;k++){var an=k*Math.PI/4;s+=PL('M'+(30+Math.cos(an)*13)+' '+(38+Math.sin(an)*13)+' L'+(30+Math.cos(an)*17)+' '+(38+Math.sin(an)*17),PAL.o,1.6);}s+=eyes(34,35,3.5);s+=PL('M38 42 q3 2 6 0',PAL.o,1.6);return s;}
+  s+=P('M16 38 L6 29 L6 47 Z',PAL.a);
+  s+=E(32,38,o.big?19:15,o.big?11:9.5,PAL.b);
+  if(o.shark)s+=P('M30 29 L35 17 L40 29 Z',PAL.a);
+  if(o.dolphin)s+=P('M44 34 L54 37 L44 40 Z',PAL.b);
+  if(o.stripes)s+=PL('M28 30 L28 46 M35 29 L35 47',PAL.a,2.5);
+  s+=Cd(o.dolphin?42:38,35,2);
+  s+=PL('M'+(o.dolphin?44:41)+' 41 q3 2.5 6 .5',PAL.o,1.6);
+  if(o.spout){s+=PL('M36 25 C36 20 33 19 33 15',PAL.l,2);s+=PL('M40 25 C40 19 43 18 43 14',PAL.l,2);s+=Cd(33,13,1.6)+Cd(43,12,1.6);}
+  return s;
+}
+function snake(){
+  var d='M8 52 C14 42 20 58 28 48 C36 38 42 54 50 44';
+  return PL(d,PAL.o,9)+PL(d,PAL.b,6)+C(50,44,6.5,PAL.b)+Cd(48,42,1.6)+Cd(53,42,1.6)+PL('M56 45 L61 44 M61 44 L63 42 M61 44 L63 46',PAL.n,1.6);
+}
+function turtle(){
+  var s=P('M14 46 L10 50 L15 51 Z',PAL.b);
+  s+=E(22,50,4,3,PAL.b)+E(42,50,4,3,PAL.b);
+  s+=P('M14 46 A18 15 0 0 1 50 46 Z',PAL.a);
+  s+=PL('M22 34 L22 45 M32 31 L32 45 M42 34 L42 45 M16 40 L48 40',PAL.o,1.4);
+  s+=C(52,42,6,PAL.b)+Cd(50,40,1.6)+Cd(54,40,1.6)+PL('M50 45 q2 1.5 4 0',PAL.o,1.4);
+  return s;
+}
+function croc(o){
+  o=o||{};var s=P('M14 44 L4 40 L4 48 Z',PAL.b);
+  s+=PL('M22 50 L22 58 M40 50 L40 58',PAL.o,2.2);
+  s+=E(30,44,o.small?17:19,7.5,PAL.b);
+  s+=P('M20 38 L24 34 L28 38 L32 34 L36 38 L40 34',PAL.a,1.8);
+  s+=E(50,43,9,5.5,PAL.b);
+  s+=C(45,36,3,PAL.b)+C(51,36,3,PAL.b)+Cd(45,35.5,1.4)+Cd(51,35.5,1.4);
+  s+=PL('M44 46 L56 46',PAL.o,1.4);
+  if(o.wings)s+=P('M26 40 C18 28 14 20 16 12 C24 20 30 28 34 36 Z',PAL.a);
+  return s;
+}
+function trex(o){
+  o=o||{};var s=PL('M22 46 C12 48 7 52 5 56',PAL.b,5)+PL('M22 46 C12 48 7 52 5 56',PAL.o,1.2);
+  s+=PL('M28 50 L27 59 M36 50 L37 59',PAL.o,2.6);
+  s+=E(30,42,12,13,PAL.b);
+  if(o.longneck){s+=PL('M36 36 C42 26 43 16 40 8',PAL.b,6.5);s+=PL('M36 36 C42 26 43 16 40 8',PAL.o,1.1);s+=C(40,8,5.5,PAL.b)+Cd(38,7,1.4)+E(44,10,2,1.5,PAL.n);}
+  else{s+=C(40,26,9,PAL.b)+PL('M44 30 L49 30',PAL.o,1.4)+Cd(38,23,1.8)+E(47,25,2.2,1.6,PAL.n)+PL('M35 40 L39 43',PAL.o,2);}
+  return s;
+}
+function seal(){
+  var s=P('M16 46 L8 42 L8 50 Z',PAL.a)+P('M14 44 L6 40',PAL.a,2);
+  s+=E(32,44,17,9.5,PAL.b);
+  s+=E(38,50,5,3,PAL.a);
+  s+=C(44,34,8.5,PAL.b)+eyes(43,32,3.4)+E(48,36,2.2,1.7,PAL.n);
+  s+=PL('M50 38 l3 1 M50 35 l3 0',PAL.o,1.2);
+  return s;
+}
+function bat(){
+  var s=P('M24 38 C14 30 8 34 5 28 C10 28 12 24 16 26 C20 28 24 32 27 34 Z',PAL.a);
+  s+=P('M40 38 C50 30 56 34 59 28 C54 28 52 24 48 26 C44 28 40 32 37 34 Z',PAL.a);
+  s+=C(32,38,8.5,PAL.b);
+  s+=P('M27 32 L25 24 L31 29 Z',PAL.b)+P('M37 32 L39 24 L33 29 Z',PAL.b);
+  s+=eyes(32,37,3.2)+E(32,41,2,1.5,PAL.n);
+  return s;
+}
+function butterfly(){
+  var s=E(24,32,9,7,PAL.a)+E(40,32,9,7,PAL.a)+E(25,44,7,5.5,PAL.l)+E(39,44,7,5.5,PAL.l);
+  s+=Cd(24,32,1.6)+Cd(40,32,1.6);
+  s+=PL('M32 28 L32 50',PAL.o,3);
+  s+=PL('M32 28 C30 24 27 22 25 21 M32 28 C34 24 37 22 39 21',PAL.o,1.5);
+  s+=Cd(25,20,1.4)+Cd(39,20,1.4);
+  return s;
+}
+function bee(){
+  var s=E(27,30,7,5,PAL.w)+E(37,30,7,5,PAL.w);
+  s+=E(32,42,11,8.5,PAL.b);
+  s+=PL('M28 35 L28 49 M34 34 L34 50',PAL.a,3);
+  s+=Cd(38,39,1.8)+PL('M41 45 L45 47',PAL.o,1.8);
+  s+=PL('M28 34 C26 30 24 29 22 28',PAL.o,1.4);
+  return s;
+}
+function ladybug(){
+  var s=C(32,40,12,PAL.a);
+  s+=PL('M32 29 L32 51',PAL.o,1.6);
+  s+=Cd(26,36,2)+Cd(38,36,2)+Cd(27,45,2)+Cd(37,45,2);
+  s+=C(32,27,5,PAL.b)+Cd(30,26,1.3)+Cd(34,26,1.3);
+  return s;
+}
+function octopus(){
+  var s=P('M20 40 A12 12 0 0 1 44 40 L44 44 L20 44 Z',PAL.b);
+  s+=PL('M23 44 C22 50 19 52 18 56 M29 44 C28 50 26 53 26 57 M35 44 C36 50 38 53 38 57 M41 44 C42 50 45 52 46 56',PAL.o,2.2);
+  s+=eyes(32,32,4)+PL('M29 38 q3 2 6 0',PAL.o,1.5);
+  s+=C(24,36,2,PAL.a)+C(40,36,2,PAL.a);
+  return s;
+}
+function squid(){
+  var s=P('M32 14 L44 38 L20 38 Z',PAL.b);
+  s+=PL('M25 38 C24 46 21 49 20 54 M30 38 C30 46 28 50 28 55 M34 38 C34 46 36 50 36 55 M39 38 C40 46 43 49 44 54',PAL.o,2);
+  s+=eyes(32,30,4);
+  return s;
+}
+function jellyfish(){
+  var s=P('M18 34 A14 12 0 0 1 46 34 L46 38 L18 38 Z',PAL.l);
+  s+=PL('M22 38 C21 45 24 48 22 55 M28 38 C27 46 30 49 28 56 M34 38 C35 46 32 49 34 56 M40 38 C41 45 38 48 40 55',PAL.a,2);
+  s+=eyes(32,28,4.5)+PL('M29 33 q3 2 6 0',PAL.o,1.5);
+  return s;
+}
+function crab(){
+  var s=PL('M20 40 C14 38 10 40 8 44 M44 40 C50 38 54 40 56 44',PAL.o,2);
+  s+=C(12,34,5,PAL.a)+C(52,34,5,PAL.a);
+  s+=PL('M12 34 L10 30 M52 34 L54 30',PAL.o,1.6);
+  s+=E(32,44,13,8.5,PAL.b);
+  s+=PL('M28 36 L27 30 M36 36 L37 30',PAL.o,1.8)+Cd(27,29,1.7)+Cd(37,29,1.7);
+  s+=PL('M28 47 q4 2.5 8 0',PAL.o,1.5);
+  return s;
+}
+function shrimp(){
+  var s=PL('M16 50 C14 38 24 28 36 30 C46 32 50 40 46 46',PAL.o,8)+PL('M16 50 C14 38 24 28 36 30 C46 32 50 40 46 46',PAL.b,5.5);
+  s+=P('M16 50 L8 54 L13 44 Z',PAL.a);
+  s+=Cd(42,40,1.8);
+  s+=PL('M44 36 C50 30 54 28 58 28 M44 39 C51 36 55 36 58 37',PAL.o,1.4);
+  s+=PL('M30 33 L30 38 M37 33 L37 38',PAL.a,1.8);
+  return s;
+}
+function snail(){
+  var s=C(28,36,11,PAL.a);
+  s+=PL('M28 36 m-6 0 a6 6 0 1 1 6 6 a3.5 3.5 0 1 0 -3.5 -3.5',PAL.o,1.6);
+  s+=P('M16 44 C26 42 40 42 50 44 L50 50 L16 50 Z',PAL.b);
+  s+=C(48,38,5.5,PAL.b);
+  s+=PL('M46 34 L44 29 M50 34 L52 29',PAL.o,1.6)+Cd(44,28,1.6)+Cd(52,28,1.6);
+  return s;
+}
+function caterpillar(){
+  var xs=[14,23,32,41,49],s='';
+  for(var k=0;k<5;k++)s+=C(xs[k],44-(k===0?3:0),7,PAL[k%2?'b':'l']);
+  s+=Cd(47,41,1.5)+Cd(52,41,1.5)+PL('M47 47 q2.5 2 5 0',PAL.o,1.4);
+  s+=PL('M48 35 C47 31 45 29 43 28 M52 35 C53 31 55 29 57 28',PAL.o,1.4);
+  return s;
+}
+function worm(){
+  var d='M10 48 C16 40 22 54 30 46 C38 38 44 52 52 44';
+  return PL(d,PAL.o,7.5)+PL(d,PAL.l,5)+Cd(50,42,1.5)+Cd(54,43,1.5);
+}
+function microbe(){
+  var s='',an;
+  for(var k=0;k<8;k++){an=k*Math.PI/4;s+=C(32+Math.cos(an)*14,38+Math.sin(an)*14,2.6,PAL.a);}
+  s+=C(32,38,11,PAL.l)+eyes(32,36,3.5)+PL('M28 42 q4 3 8 0',PAL.o,1.6);
+  return s;
+}
+function flower(o){
+  o=o||{};var s=PL('M32 40 L32 58',PAL.o,2.2)+P('M32 50 C26 48 24 44 24 42 C28 42 31 45 32 48 Z',PAL.a);
+  var cx=32,cy=28,n=o.sun?9:6,an;
+  for(var k=0;k<n;k++){an=k*2*Math.PI/n-Math.PI/2;s+=E(cx+Math.cos(an)*(o.sun?9:7.5),cy+Math.sin(an)*(o.sun?9:7.5),o.sun?3.5:4.5,o.sun?5.5:6.5,o.rose?PAL.a:PAL.l);}
+  s+=C(cx,cy,o.sun?5.5:4.5,o.rose?PAL.l:PAL.a);
+  if(o.rose)s+=PL(cx+' '+cy+' m-2.5 0 a2.5 2.5 0 1 1 2.5 2.5',PAL.o,1.3);
+  if(o.sun)s+=Cd(cx-2,cy-1,1)+Cd(cx+2,cy-1,1)+Cd(cx,cy+2,1);
+  return s;
+}
+function tree(o){
+  if(o.palm){var s=PL('M30 58 C28 46 28 36 32 26',PAL.o,4);s+=PL('M30 58 C28 46 28 36 32 26',PAL.a,2.2);
+    s+=P('M32 26 C24 22 16 22 12 26 C18 26 24 28 30 30 Z',PAL.a)+P('M32 26 C40 22 48 22 52 26 C46 26 40 28 34 30 Z',PAL.a)+P('M32 26 C28 18 22 14 16 14 C22 18 26 22 30 28 Z',PAL.b)+P('M32 26 C36 18 42 14 48 14 C42 18 38 22 34 28 Z',PAL.b);
+    s+=C(30,28,2.4,PAL.n)+C(35,28,2.4,PAL.n);return s;}
+  var s=P('M28 44 L36 44 L36 58 L28 58 Z',PAL.a);
+  s+=P('M32 8 L46 28 L18 28 Z',PAL.b)+P('M32 16 L48 38 L16 38 Z',PAL.b)+P('M32 24 L50 46 L14 46 Z',PAL.b);
+  return s;
+}
+function cactus(){
+  var s=P('M27 22 L37 22 L37 58 L27 58 Z',PAL.b);
+  s+=P('M20 32 C20 28 24 28 24 32 L24 40 L27 40 L27 46 L20 46 Z',PAL.b);
+  s+=P('M44 26 C44 22 40 22 40 26 L40 36 L37 36 L37 42 L44 42 Z',PAL.b);
+  s+=PL('M30 28 L30 34 M34 40 L34 46 M31 50 L31 54',PAL.o,1.3);
+  return s;
+}
+function mushroom(){
+  var s=P('M26 38 L38 38 L36 56 L28 56 Z',PAL.l);
+  s+=P('M14 38 A18 15 0 0 1 50 38 Z',PAL.a);
+  s+=C(24,28,2.6,PAL.l)+C(34,23,2.6,PAL.l)+C(42,30,2.6,PAL.l);
+  return s;
+}
+function coral(){
+  return PL('M32 58 L32 40 M32 48 C26 46 22 42 22 34 M22 34 C20 30 22 27 24 26 M32 40 C36 38 38 34 38 28 M38 28 C38 24 40 22 42 21 M32 48 C38 48 42 44 44 40 M44 40 C46 38 48 38 50 39',PAL.a,4)+PL('M32 58 L32 40 M32 48 C26 46 22 42 22 34 M32 40 C36 38 38 34 38 28 M32 48 C38 48 42 44 44 40',PAL.o,1.2);
+}
+function nest(){
+  var s=E(32,46,16,8,PAL.a);
+  s+=PL('M18 44 C24 40 40 40 46 44 M20 48 C26 44 38 44 44 48',PAL.o,1.5);
+  s+=E(27,38,4.5,6,PAL.w)+E(37,38,4.5,6,PAL.w);
+  return s;
+}
+function rock(){
+  var s=P('M16 50 C14 40 20 30 30 28 C42 26 50 34 48 46 C47 52 40 56 30 55 C22 54 17 55 16 50 Z',PAL.b);
+  s+=PL('M24 38 C28 36 32 36 34 38 M36 46 C39 45 42 45 44 47',PAL.o,1.4);
+  return s;
+}
+function star(){
+  var s=P('M32 14 L37 27 L51 28 L40 37 L44 51 L32 43 L20 51 L24 37 L13 28 L27 27 Z',PAL.l);
+  s+=eyes(32,33,3.5)+PL('M29 38 q3 2.5 6 0',PAL.o,1.5);
+  return s;
+}
+function rainbow(){
+  return P('M10 50 A22 22 0 0 1 54 50 L46 50 A14 14 0 0 0 18 50 Z',PAL.a)+P('M18 50 A14 14 0 0 1 46 50 L39 50 A7 7 0 0 0 25 50 Z',PAL.l)+E(14,50,7,5,PAL.w)+E(50,50,7,5,PAL.w);
+}
+var DRAW={quad:quad,bird:bird,fish:fish,snake:snake,turtle:turtle,croc:croc,trex:trex,seal:seal,bat:bat,butterfly:butterfly,bee:bee,ladybug:ladybug,octopus:octopus,squid:squid,jellyfish:jellyfish,crab:crab,shrimp:shrimp,snail:snail,caterpillar:caterpillar,worm:worm,microbe:microbe,flower:flower,tree:tree,cactus:cactus,mushroom:mushroom,coral:coral,nest:nest,rock:rock,star:star,rainbow:rainbow};
+function animalSVG(spec){
+  var fn=DRAW[spec[1]]||quad;
+  return '<svg viewBox="0 0 64 64" width="100%" height="100%">'+fn(spec[2]||{})+'</svg>';
+}
+
+var A=[["Cat","quad",{e:"pointy",t:"thin"}],["Dog","quad",{e:"floppy",t:"thin"}],["Bunny","quad",{e:"long",t:"fluffy"}],["Mouse","quad",{e:"round",t:"thin"}],["Tiger","quad",{e:"round",t:"thin",stripes:1}],["Elephant","quad",{e:"big",trunk:1,t:"thin"}],["Monkey","quad",{e:"round",t:"curl"}],["Horse","quad",{e:"pointy",mane:1,t:"fluffy"}],["Pig","quad",{e:"pointy",t:"curl",snout:"pig"}],["Sheep","quad",{e:"none",wool:1,t:"none"}],["Giraffe","quad",{e:"round",longneck:1,spots:1,t:"thin"}],["Turtle","turtle",{}],["Butterfly","butterfly",{}],["Penguin","bird",{upright:1}],["Dolphin","fish",{dolphin:1}],["Leopard","quad",{e:"round",spots:1,t:"thin"}],["Cow","quad",{e:"round",horns:1,spots:1,t:"thin",snout:"hippo"}],["Kangaroo","quad",{e:"long",t:"thin"}],["Flamingo","bird",{longneck:1,longlegs:1}],["Whale","fish",{big:1,spout:1}],["Goat","quad",{e:"floppy",horns:1,beard:1,t:"none"}],["Snake","snake",{}],["Baby Chick","bird",{}],["Owl","bird",{tufts:1,round:1}],["Seal","seal",{}],["Rhino","quad",{e:"round",horn:1,t:"none"}],["Poodle","quad",{e:"floppy",wool:1,t:"fluffy"}],["Swan","bird",{longneck:1}],["Bat","bat",{}],["Fish","fish",{}],["Chipmunk","quad",{e:"round",stripes:1,t:"fluffy"}],["Peacock","bird",{fan:1}],["Crocodile","croc",{}],["Hippo","quad",{e:"round",t:"none",snout:"hippo"}],["Parrot","bird",{tail:1}],["Llama","quad",{e:"long",longneck:1,t:"none"}],["Bee","bee",{}],["Duck","bird",{}],["Mammoth","quad",{e:"big",trunk:1,tusks:1,t:"thin"}],["Gorilla","quad",{e:"round",t:"none"}],["Shark","fish",{shark:1}],["Lizard","croc",{small:1}],["Eagle","bird",{wings:1}],["Ram","quad",{e:"round",horns:"curl",t:"none"}],["Octopus","octopus",{}],["Hedgehog","quad",{e:"round",spikes:1,t:"none"}],["Camel","quad",{e:"round",humps:1,t:"thin"}],["Ladybug","ladybug",{}],["Dodo","bird",{round:1}],["Big Whale","fish",{big:1,spout:1}],["Zebra","quad",{e:"pointy",stripes:1,mane:1,t:"thin"}],["Sloth","quad",{e:"round",t:"none",sleepy:1}],["Rooster","bird",{comb:1}],["Jellyfish","jellyfish",{}],["Orangutan","quad",{e:"round",t:"none"}],["Tropical Fish","fish",{stripes:1}],["Otter","quad",{e:"round",t:"thin"}],["Dragon","croc",{wings:1}],["Chicken","bird",{comb:1,round:1}],["T-Rex","trex",{}],["Rat","quad",{e:"round",t:"thin"}],["Phoenix","bird",{wings:1,crest:1,tail:1}],["Crab","crab",{}],["Boar","quad",{e:"pointy",tusks:1,t:"none",snout:"pig"}],["Dove","bird",{}],["Badger","quad",{e:"round",stripes:1,t:"none"}],["Blowfish","fish",{puff:1}],["Goose","bird",{longneck:1}],["Dinosaur","trex",{longneck:1}],["Midnight Cat","quad",{e:"pointy",t:"thin"}],["Snail","snail",{}],["Turkey","bird",{fan:1,comb:1}],["Beaver","quad",{e:"round",t:"flat"}],["Squid","squid",{}],["Ox","quad",{e:"round",horns:1,t:"thin"}],["Crow","bird",{}],["Caterpillar","caterpillar",{}],["Two-Hump Camel","quad",{e:"round",humps:2,t:"thin"}],["Shrimp","shrimp",{}],["Skunk","quad",{e:"pointy",t:"bigfluffy",stripes:1}],["Polar Bear","quad",{e:"round",t:"none"}],["Worm","worm",{}],["Microbe","microbe",{}],["Donkey","quad",{e:"long",mane:1,t:"thin"}],["Guide Dog","quad",{e:"floppy",t:"thin",harness:1}],["Bison","quad",{e:"round",horns:1,hump:1,t:"thin"}],["Moose","quad",{e:"round",antlers:1,t:"thin"}],["Coral","coral",{}],["Nest with Eggs","nest",{}],["Rock","rock",{}],["Mushroom","mushroom",{}],["Evergreen","tree",{pine:1}],["Palm Tree","tree",{palm:1}],["Blossom","flower",{}],["Hibiscus","flower",{}],["Rose","flower",{rose:1}],["Sunflower","flower",{sun:1}],["Star","star",{}],["Rainbow","rainbow",{}],["Cactus","cactus",{}]];
 var i=-1;
 try{i=parseInt(localStorage.getItem('timaZooIdx')||'-1',10);if(isNaN(i)||i<-1||i>=A.length)i=-1;}catch(e){}
 var btn=document.getElementById('zooBtn'),roam=document.getElementById('roam');
@@ -115,7 +400,7 @@ function spawn(idx){
   var rect=btn.getBoundingClientRect();
   var r=document.createElement('div');r.className=reduced?'ra':'ra pop';
   var flip=document.createElement('span');flip.className='flip';
-  var s=document.createElement('span');s.className='ae';s.textContent=A[idx][1];
+  var s=document.createElement('span');s.className='ae';s.innerHTML=animalSVG(A[idx]);
   s.style.animationDelay=(-Math.random())+'s';
   flip.appendChild(s);r.appendChild(flip);
   var tg=document.createElement('div');tg.className='rtag';tg.textContent=A[idx][0];

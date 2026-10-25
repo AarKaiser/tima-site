@@ -32,16 +32,18 @@ a.ax{display:inline-block;-webkit-tap-highlight-color:transparent;cursor:pointer
 .zoo{margin-top:22px;font:inherit;font-size:20px;font-weight:bold;color:#fff;background:linear-gradient(180deg,#ff6fae,#ff4894);border:2px solid #d63a82;border-radius:999px;padding:13px 24px;cursor:pointer;box-shadow:0 4px 14px rgba(214,58,130,.4);-webkit-tap-highlight-color:transparent}
 .zoo:active{transform:scale(.96)}
 .roam{position:fixed;inset:0;overflow:hidden;pointer-events:none;z-index:2}
-.ra{position:absolute;font-size:52px;line-height:1;animation:wander var(--dur,10s) ease-in-out var(--delay,0s) infinite alternate;will-change:transform}
-.ra>span.ae{display:inline-block;filter:grayscale(1) sepia(1) saturate(4) hue-rotate(-100deg) brightness(1.06);animation:hp .9s cubic-bezier(.3,.1,.5,1) infinite}
-.ra.pop>span.ae{animation:pop .5s cubic-bezier(.2,1.7,.4,1),hp .9s cubic-bezier(.3,.1,.5,1) .5s infinite}
-@keyframes wander{to{transform:translate(var(--dx),var(--dy))}}
+.ra{position:absolute;left:0;top:0;font-size:52px;line-height:1;will-change:transform}
+.ra .flip{display:inline-block;transition:transform .3s}
+.ra .ae{display:inline-block;filter:grayscale(1) sepia(1) saturate(4) hue-rotate(-100deg) brightness(1.06);animation:hp .9s cubic-bezier(.3,.1,.5,1) infinite}
+.ra.pop .ae{animation:pop .5s cubic-bezier(.2,1.7,.4,1),hp .9s cubic-bezier(.3,.1,.5,1) .5s infinite}
 @keyframes pop{0%{transform:scale(.15) rotate(-16deg);opacity:0}100%{transform:scale(1) rotate(0);opacity:1}}
 .ra.go{transition:opacity .8s;opacity:0}
 .rtag{position:absolute;left:50%;top:0;font-size:14px;font-weight:bold;color:#a01e63;background:rgba(255,255,255,.8);padding:2px 9px;border-radius:999px;white-space:nowrap;animation:tagfade 2.2s ease-out forwards}
 @keyframes tagfade{0%{opacity:0;transform:translate(-50%,-60%) scale(.6)}15%{opacity:1;transform:translate(-50%,-140%) scale(1)}70%{opacity:1;transform:translate(-50%,-140%)}100%{opacity:0;transform:translate(-50%,-170%)}}
 .hf{position:absolute;font-size:22px;pointer-events:none;animation:fly 1s ease-out forwards}
 @keyframes fly{0%{transform:translate(0,0) scale(.6);opacity:1}100%{transform:translate(var(--dx),-90px) scale(1.3);opacity:0}}
+@media (max-width:480px){.ra{font-size:42px}}
+@media (prefers-reduced-motion:reduce){.ra .ae{animation:none}.ra.go{transition:none}.hf{display:none}.rtag{animation:none}}
 @media (prefers-reduced-motion:reduce){.ra,.ra>span.ae{animation:none}.ra.go{transition:none}.hf{display:none}.rtag{animation:none}}
 </style></head><body>
 <div class="snow" aria-hidden="true"><i class="sf" style="left:92.0%;width:8px;height:8px;animation-duration:9.8s;animation-delay:-0.7s"></i><i class="sf" style="left:10.0%;width:12px;height:12px;animation-duration:11.1s;animation-delay:-12.7s"></i><i class="sf" style="left:4.6%;width:8px;height:8px;animation-duration:10.0s;animation-delay:-1.0s"></i><i class="sf" style="left:53.9%;width:7px;height:7px;animation-duration:7.4s;animation-delay:-7.9s"></i><i class="sf" style="left:61.5%;width:8px;height:8px;animation-duration:11.1s;animation-delay:-0.9s"></i><i class="sf" style="left:39.1%;width:12px;height:12px;animation-duration:13.8s;animation-delay:-0.7s"></i><i class="sf" style="left:28.8%;width:8px;height:8px;animation-duration:8.0s;animation-delay:-1.6s"></i><i class="sf" style="left:54.8%;width:8px;height:8px;animation-duration:11.8s;animation-delay:-1.4s"></i><i class="sf" style="left:62.3%;width:12px;height:12px;animation-duration:9.6s;animation-delay:-7.7s"></i><i class="sf" style="left:55.2%;width:7px;height:7px;animation-duration:11.3s;animation-delay:-6.9s"></i><i class="sf" style="left:42.0%;width:12px;height:12px;animation-duration:9.2s;animation-delay:-8.2s"></i><i class="sf" style="left:35.7%;width:10px;height:10px;animation-duration:8.7s;animation-delay:-2.5s"></i><i class="sf" style="left:8.9%;width:8px;height:8px;animation-duration:9.1s;animation-delay:-6.9s"></i><i class="sf" style="left:71.0%;width:8px;height:8px;animation-duration:9.0s;animation-delay:-13.7s"></i><i class="sf" style="left:50.1%;width:7px;height:7px;animation-duration:8.2s;animation-delay:-4.8s"></i><i class="sf" style="left:41.5%;width:10px;height:10px;animation-duration:13.7s;animation-delay:-1.1s"></i><i class="sf" style="left:56.0%;width:12px;height:12px;animation-duration:13.1s;animation-delay:-4.4s"></i><i class="sf" style="left:58.1%;width:8px;height:8px;animation-duration:11.1s;animation-delay:-6.4s"></i><i class="sf" style="left:91.7%;width:7px;height:7px;animation-duration:10.3s;animation-delay:-9.3s"></i><i class="sf" style="left:71.2%;width:7px;height:7px;animation-duration:9.2s;animation-delay:-8.1s"></i><i class="sf" style="left:28.3%;width:10px;height:10px;animation-duration:9.7s;animation-delay:-9.4s"></i><i class="sf" style="left:91.3%;width:7px;height:7px;animation-duration:9.5s;animation-delay:-8.6s"></i><i class="sf" style="left:6.7%;width:10px;height:10px;animation-duration:12.4s;animation-delay:-1.8s"></i><i class="sf" style="left:39.2%;width:8px;height:8px;animation-duration:13.4s;animation-delay:-7.0s"></i><i class="sf" style="left:44.1%;width:8px;height:8px;animation-duration:10.8s;animation-delay:-12.4s"></i><i class="sf" style="left:83.9%;width:10px;height:10px;animation-duration:8.9s;animation-delay:-5.8s"></i><i class="sf" style="left:66.5%;width:8px;height:8px;animation-duration:9.7s;animation-delay:-3.2s"></i><i class="sf" style="left:17.9%;width:7px;height:7px;animation-duration:8.6s;animation-delay:-3.3s"></i></div>
@@ -67,15 +69,16 @@ a.ax{display:inline-block;-webkit-tap-highlight-color:transparent;cursor:pointer
 <button id="zooBtn" class="zoo" type="button">🐾 Tima's Zoo 🐾</button>
 <script>
 (function(){
-var A=[["Cat", "🐱"], ["Dog", "🐶"], ["Mouse", "🐭"], ["Hamster", "🐹"], ["Bunny", "🐰"], ["Fox", "🦊"], ["Bear", "🐻"], ["Panda", "🐼"], ["Koala", "🐨"], ["Tiger", "🐯"], ["Lion", "🦁"], ["Cow", "🐮"], ["Pig", "🐷"], ["Frog", "🐸"], ["Monkey", "🐵"], ["Shy Monkey", "🙈"], ["Happy Monkey", "🙉"], ["Quiet Monkey", "🙊"], ["Gorilla", "🦍"], ["Orangutan", "🦧"], ["Poodle", "🐩"], ["Wolf", "🐺"], ["Raccoon", "🦝"], ["Horse", "🐴"], ["Unicorn", "🦄"], ["Zebra", "🦓"], ["Deer", "🦌"], ["Donkey", "🫏"], ["Sheep", "🐑"], ["Goat", "🐐"], ["Llama", "🦙"], ["Giraffe", "🦒"], ["Elephant", "🐘"], ["Mammoth", "🦣"], ["Rhino", "🦏"], ["Hippo", "🦛"], ["Hedgehog", "🦔"], ["Bat", "🦇"], ["Kangaroo", "🦘"], ["Badger", "🦡"], ["Otter", "🦦"], ["Skunk", "🦨"], ["Chipmunk", "🐿️"], ["Beaver", "🦫"], ["Camel", "🐪"], ["Sloth", "🦥"], ["Kitty", "🐈"], ["Midnight Kitty", "🐈‍⬛"], ["Puppy", "🐕"], ["Turtle", "🐢"], ["Snake", "🐍"], ["Lizard", "🦎"], ["Crocodile", "🐊"], ["T-Rex", "🦖"], ["Dinosaur", "🦕"], ["Whale", "🐳"], ["Dolphin", "🐬"], ["Seal", "🦭"], ["Fish", "🐟"], ["Tropical Fish", "🐠"], ["Blowfish", "🐡"], ["Shark", "🦈"], ["Octopus", "🐙"], ["Squid", "🦑"], ["Jellyfish", "🪼"], ["Crab", "🦀"], ["Lobster", "🦞"], ["Shrimp", "🦐"], ["Snail", "🐌"], ["Butterfly", "🦋"], ["Caterpillar", "🐛"], ["Ant", "🐜"], ["Bee", "🐝"], ["Ladybug", "🐞"], ["Cricket", "🦗"], ["Hatching Chick", "🐣"], ["Baby Chick", "🐤"], ["Little Chick", "🐥"], ["Bird", "🐦"], ["Penguin", "🐧"], ["Dodo", "🦤"], ["Dove", "🕊️"], ["Eagle", "🦅"], ["Duck", "🦆"], ["Swan", "🦢"], ["Owl", "🦉"], ["Flamingo", "🦩"], ["Peacock", "🦚"], ["Parrot", "🦜"], ["Rooster", "🐓"], ["Turkey", "🦃"], ["Polar Bear", "🐻‍❄️"], ["Moose", "🫎"], ["Goose", "🪿"], ["Guide Dog", "🦮"], ["Princess Kitty", "😺"], ["Smiling Kitty", "😸"], ["Heart-Eyes Kitty", "😻"], ["Kissy Kitty", "😽"], ["Ram", "🐏"]];
+var A=[["Cat","🐈"],["Dog","🐕"],["Bunny","🐇"],["Mouse","🐁"],["Tiger","🐅"],["Elephant","🐘"],["Monkey","🐒"],["Horse","🐎"],["Pig","🐖"],["Sheep","🐑"],["Giraffe","🦒"],["Turtle","🐢"],["Butterfly","🦋"],["Penguin","🐧"],["Dolphin","🐬"],["Leopard","🐆"],["Cow","🐄"],["Kangaroo","🦘"],["Flamingo","🦩"],["Whale","🐳"],["Goat","🐐"],["Snake","🐍"],["Baby Chick","🐤"],["Owl","🦉"],["Seal","🦭"],["Rhino","🦏"],["Poodle","🐩"],["Swan","🦢"],["Bat","🦇"],["Fish","🐟"],["Chipmunk","🐿️"],["Peacock","🦚"],["Crocodile","🐊"],["Hippo","🦛"],["Parrot","🦜"],["Llama","🦙"],["Bee","🐝"],["Duck","🦆"],["Mammoth","🦣"],["Gorilla","🦍"],["Shark","🦈"],["Lizard","🦎"],["Eagle","🦅"],["Ram","🐏"],["Octopus","🐙"],["Hedgehog","🦔"],["Camel","🐪"],["Ladybug","🐞"],["Dodo","🦤"],["Big Whale","🐋"],["Zebra","🦓"],["Sloth","🦥"],["Rooster","🐓"],["Jellyfish","🪼"],["Orangutan","🦧"],["Tropical Fish","🐠"],["Otter","🦦"],["Dragon","🐉"],["Chicken","🐔"],["T-Rex","🦖"],["Rat","🐀"],["Phoenix","🐦‍🔥"],["Crab","🦀"],["Boar","🐗"],["Dove","🕊️"],["Badger","🦡"],["Blowfish","🐡"],["Goose","🪿"],["Dinosaur","🦕"],["Midnight Cat","🐈‍⬛"],["Snail","🐌"],["Turkey","🦃"],["Beaver","🦫"],["Squid","🦑"],["Ox","🐂"],["Crow","🐦‍⬛"],["Caterpillar","🐛"],["Two-Hump Camel","🐫"],["Shrimp","🦐"],["Skunk","🦨"],["Polar Bear","🐻‍❄️"],["Worm","🪱"],["Microbe","🦠"],["Donkey","🫏"],["Guide Dog","🦮"],["Bison","🦬"],["Moose","🫎"],["Coral","🪸"],["Nest with Eggs","🪺"],["Rock","🪨"],["Mushroom","🍄"],["Evergreen","🌲"],["Palm Tree","🌴"],["Blossom","🌸"],["Hibiscus","🌺"],["Rose","🌹"],["Sunflower","🌻"],["Star","⭐"],["Rainbow","🌈"],["Cactus","🌵"]];
 var i=-1;
 try{i=parseInt(localStorage.getItem('timaZooIdx')||'-1',10);if(isNaN(i)||i<-1||i>=A.length)i=-1;}catch(e){}
 var btn=document.getElementById('zooBtn'),roam=document.getElementById('roam');
 var reduced=window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches;
 var MAXROAM=12;
+var SPEED=45;
 function hearts(x,y){
   if(reduced)return;
-  var H=['💖','💕','✨','💗','🌸'];
+  var H=['\u2764\ufe0f','\ud83d\udc96','\u2728','\ud83d\udc97','\ud83c\udf38'];
   for(var k=0;k<6;k++){
     var s=document.createElement('span');s.className='hf';
     s.textContent=H[Math.floor(Math.random()*H.length)];
@@ -86,34 +89,82 @@ function hearts(x,y){
     (function(el){setTimeout(function(){el.remove()},1100)})(s);
   }
 }
+var RAWM=[],RAFL=false;
+function rawmTick(){if(RAWM.length&&!RAFL){RAFL=true;requestAnimationFrame(rawmStep);}}
+function rawmStep(t){
+  RAFL=false;
+  var vw=innerWidth,vh=innerHeight,run=false;
+  for(var k=0;k<RAWM.length;k++){
+    var m=RAWM[k];
+    if(!m.el.isConnected)continue;
+    run=true;
+    if(m.last==null){m.last=t;continue;}
+    var dt=Math.min((t-m.last)/1000,.1);m.last=t;
+    m.x+=m.vx*dt;m.y+=m.vy*dt;
+    if(m.x<0){m.x=0;m.vx=Math.abs(m.vx);}
+    if(m.x>vw-m.w){m.x=vw-m.w;m.vx=-Math.abs(m.vx);}
+    if(m.y<0){m.y=0;m.vy=Math.abs(m.vy);}
+    if(m.y>vh-m.h){m.y=vh-m.h;m.vy=-Math.abs(m.vy);}
+    if(m.vx<-.5)m.flip.style.transform='scaleX(-1)';
+    else if(m.vx>.5)m.flip.style.transform='scaleX(1)';
+    m.el.style.transform='translate('+m.x+'px,'+m.y+'px)';
+  }
+  if(run)requestAnimationFrame(rawmStep);
+}
 function spawn(idx){
   var rect=btn.getBoundingClientRect();
-  var x=rect.left+rect.width/2-26,y=rect.top-30;
   var r=document.createElement('div');r.className=reduced?'ra':'ra pop';
-  r.style.left=x+'px';r.style.top=y+'px';
-  r.style.setProperty('--dx',(Math.random()<.5?-1:1)*(12+Math.random()*28)+'vw');
-  r.style.setProperty('--dy',(Math.random()<.5?-1:1)*(4+Math.random()*16)+'vh');
-  r.style.setProperty('--dur',(7+Math.random()*6)+'s');
-  r.style.setProperty('--delay','0s');
+  var flip=document.createElement('span');flip.className='flip';
   var s=document.createElement('span');s.className='ae';s.textContent=A[idx][1];
   s.style.animationDelay=(-Math.random())+'s';
-  r.appendChild(s);
-  var t=document.createElement('div');t.className='rtag';t.textContent=A[idx][0];
-  r.appendChild(t);
+  flip.appendChild(s);r.appendChild(flip);
+  var tg=document.createElement('div');tg.className='rtag';tg.textContent=A[idx][0];
+  r.appendChild(tg);
   roam.appendChild(r);
+  var w=r.offsetWidth||52,h=r.offsetHeight||52;
+  var vw=innerWidth,vh=innerHeight;
+  var m={el:r,flip:flip,w:w,h:h,
+    x:Math.min(Math.max(rect.left+rect.width/2-w/2,0),Math.max(vw-w,0)),
+    y:Math.min(Math.max(rect.top-h-10,0),Math.max(vh-h,0)),
+    vx:0,vy:0,last:null};
+  var ang=Math.random()*Math.PI*2,sp=SPEED*(0.7+Math.random()*0.6);
+  m.vx=Math.cos(ang)*sp;m.vy=Math.sin(ang)*sp;
+  if(reduced){m.vx=0;m.vy=0;}
+  m.el.style.transform='translate('+m.x+'px,'+m.y+'px)';
+  if(m.vx<-.5)flip.style.transform='scaleX(-1)';
+  RAWM.push(m);
+  if(!reduced){
+    setInterval(function(){
+      if(!r.isConnected)return;
+      var a2=Math.random()*Math.PI*2,s2=SPEED*(0.7+Math.random()*0.6);
+      m.vx=Math.cos(a2)*s2;m.vy=Math.sin(a2)*s2;
+    },2600+Math.random()*2200);
+  }else{
+    r.style.transition='transform 1.4s ease';
+    setInterval(function(){
+      if(!r.isConnected)return;
+      m.x=Math.random()*Math.max(0,innerWidth-m.w);
+      m.y=Math.random()*Math.max(0,innerHeight-m.h);
+      m.el.style.transform='translate('+m.x+'px,'+m.y+'px)';
+    },4000);
+  }
   if(!reduced)setTimeout(function(){r.classList.remove('pop')},650);
-  setTimeout(function(){t.remove()},2300);
+  setTimeout(function(){tg.remove()},2300);
+  rawmTick();
   var kids=roam.querySelectorAll('.ra');
   if(kids.length>MAXROAM){
     var old=kids[0];old.classList.add('go');
-    setTimeout(function(){old.remove()},900);
+    setTimeout(function(){
+      old.remove();
+      for(var q=RAWM.length-1;q>=0;q--){if(RAWM[q].el===old)RAWM.splice(q,1);}
+    },900);
   }
   hearts(rect.left+rect.width/2,rect.top);
 }
 function next(){
   i=(i+1)%A.length;
   try{localStorage.setItem('timaZooIdx',String(i));}catch(e){}
-  btn.textContent='🐾 Release another! 🐾';
+  btn.textContent='\ud83d\udc3e Release another! \ud83d\udc3e';
   spawn(i);
 }
 btn.addEventListener('click',next);

@@ -32,17 +32,18 @@ a.ax{display:inline-block;-webkit-tap-highlight-color:transparent;cursor:pointer
 .zoo{margin-top:22px;font:inherit;font-size:20px;font-weight:bold;color:#fff;background:linear-gradient(180deg,#ff6fae,#ff4894);border:2px solid #d63a82;border-radius:999px;padding:13px 24px;cursor:pointer;box-shadow:0 4px 14px rgba(214,58,130,.4);-webkit-tap-highlight-color:transparent}
 .zoo:active{transform:scale(.96)}
 .roam{position:fixed;inset:0;overflow:hidden;pointer-events:none;z-index:2}
-.ra{position:absolute;left:0;top:0;width:56px;height:56px;will-change:transform}
-.ra .flip{display:inline-block;transition:transform .3s}
-.ra .ae{display:inline-block;width:100%;height:100%;animation:hp .9s cubic-bezier(.3,.1,.5,1) infinite}
+.ra{position:absolute;left:0;top:0;width:64px;height:64px;will-change:transform}
+.ra .flip{display:block;width:100%;height:100%;transition:transform .3s}
+.ra .ae{display:block;width:100%;height:100%;animation:hp .9s cubic-bezier(.3,.1,.5,1) infinite}
 .ra.pop .ae{animation:pop .5s cubic-bezier(.2,1.7,.4,1),hp .9s cubic-bezier(.3,.1,.5,1) .5s infinite}
 @keyframes pop{0%{transform:scale(.15) rotate(-16deg);opacity:0}100%{transform:scale(1) rotate(0);opacity:1}}
 .ra.go{transition:opacity .8s;opacity:0}
+.ra .ae>svg{display:block;width:100%;height:100%}
 .rtag{position:absolute;left:50%;top:0;font-size:14px;font-weight:bold;color:#a01e63;background:rgba(255,255,255,.8);padding:2px 9px;border-radius:999px;white-space:nowrap;animation:tagfade 2.2s ease-out forwards}
 @keyframes tagfade{0%{opacity:0;transform:translate(-50%,-60%) scale(.6)}15%{opacity:1;transform:translate(-50%,-140%) scale(1)}70%{opacity:1;transform:translate(-50%,-140%)}100%{opacity:0;transform:translate(-50%,-170%)}}
 .hf{position:absolute;font-size:22px;pointer-events:none;animation:fly 1s ease-out forwards}
 @keyframes fly{0%{transform:translate(0,0) scale(.6);opacity:1}100%{transform:translate(var(--dx),-90px) scale(1.3);opacity:0}}
-@media (max-width:480px){.ra{width:44px;height:44px}}
+@media (max-width:480px){.ra{width:52px;height:52px}}
 @media (prefers-reduced-motion:reduce){.ra .ae{animation:none}.ra.go{transition:none}.hf{display:none}.rtag{animation:none}}
 @media (prefers-reduced-motion:reduce){.ra,.ra>span.ae{animation:none}.ra.go{transition:none}.hf{display:none}.rtag{animation:none}}
 </style></head><body>

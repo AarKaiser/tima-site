@@ -166,8 +166,13 @@ function fish(o){
   return s;
 }
 function snake(){
-  var d='M8 52 C14 42 20 58 28 48 C36 38 42 54 50 44';
-  return PL(d,PAL.o,9)+PL(d,PAL.b,6)+C(50,44,6.5,PAL.b)+Cd(48,42,1.6)+Cd(53,42,1.6)+PL('M56 45 L61 44 M61 44 L63 42 M61 44 L63 46',PAL.n,1.6);
+  var s=E(32,50,18,6.5,PAL.b)+E(32,40,14,5.5,PAL.b)+E(32,31,10,4.5,PAL.b);
+  s+=PL('M38 28 C44 22 44 14 38 12',PAL.b,7);
+  s+=PL('M38 28 C44 22 44 14 38 12',PAL.o,1.2);
+  s+=C(37,11,5.5,PAL.b);
+  s+=Cd(35,9.5,1.5)+Cd(40,9.5,1.5);
+  s+=PL('M43 12 L48 11 M48 11 L50 9 M48 11 L50 13',PAL.n,1.5);
+  return s;
 }
 function turtle(){
   var s=P('M14 46 L10 50 L15 51 Z',PAL.b);
@@ -287,8 +292,11 @@ function caterpillar(){
   return s;
 }
 function worm(){
-  var d='M10 48 C16 40 22 54 30 46 C38 38 44 52 52 44';
-  return PL(d,PAL.o,7.5)+PL(d,PAL.l,5)+Cd(50,42,1.5)+Cd(54,43,1.5);
+  var d='M14 46 C14 30 26 20 38 24 C48 27 52 36 48 44';
+  var s=PL(d,PAL.o,8)+PL(d,PAL.l,5.5);
+  s+=Cd(45,41,1.5)+Cd(49,40,1.5);
+  s+=PL('M22 34 L27 36 M20 41 L25 43 M28 28 L32 31',PAL.o,1.4);
+  return s;
 }
 
 
